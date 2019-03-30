@@ -3,4 +3,3 @@ test('Тест', () => {
   const received = 1;
   expect(received).toBe(expected);
 });
- 
