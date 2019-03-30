@@ -1,19 +1,20 @@
-image: Ubuntu1804 # образ для сборки
-stack: node 10 # окружение
+image: Visual Studio 2015
+stack: node 10
 branches:
 only:
-- master # ветка git
-cache: node_modules # кеширование
+- master
+cache: node_modules
 install:
-- npm install # команда установки зависимостей
+- npm install
 build: off
 build_script:
-- npm run build # команда сборки
+- npm run build
 test_script:
-- npm run lint && npm test # скрипт тестирования
-deploy_script: # скрипт развёртывания
+- npm run lint && npm test
+deploy_script:
 - git config --global credential.helper store
 - git config --global user.name AppVeyor
 - git config --global user.email ci@appveyor.com
-- echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
+- echo https://%GITHUB_TOKEN%:x-oauth-basic@github.com>%USERPROFILE%\.git-credentials
+- dos2unix %USERPROFILE%\.git-credentials
 - npx push-dir --dir=dist --branch=gh-pages --force --verbose
