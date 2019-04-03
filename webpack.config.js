@@ -20,17 +20,19 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
-  entry: {
-    app: './js/app.js',
-  },
-  devtool: 'inline-source-map',
+
   devServer: {
+    overlay: true,
     contentBase: '../ahj1-environment',
   },
 
-  output: {
-    filename: '.index.js',
+  entry: {
+    app: './js/app.js',
+  },  
+
+  output: {    
     path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    publicPath: 'dist/'
   },
 };

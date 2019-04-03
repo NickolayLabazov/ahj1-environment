@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "watch": "webpack --watch",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --mode development --open",
     "lint": "eslint .",
     "build": "webpack --mode production",
     "test": "jest --passWithNoTests"
@@ -29,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7.11.0",
     "jest": "^24.5.0",
+    "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
