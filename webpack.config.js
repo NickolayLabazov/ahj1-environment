@@ -28,11 +28,11 @@ module.exports = {
 
   entry: {
     app: './js/app.js',
-  },  
+  },
 
-  output: {    
+  output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    publicPath: 'dist/'
+    publicPath: 'dist/',
   },
 };
