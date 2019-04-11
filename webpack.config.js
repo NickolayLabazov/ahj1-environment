@@ -1,33 +1,35 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   module: {
-    rules: [
-      {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-            },
-          },
-        ],
-      },
+    rules: [     
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|ico)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {              
+              outputPath: 'img',              
+            },
+          },
+        ],
       },
     ],
   },
 
   devServer: {
     overlay: true,
-    contentBase: '../ahj1-environment',
+    contentBase: './src',
   },
 
   entry: {
-    app: './js/app.js',
+    app: './src/index.js',
   },
 
   output: {
@@ -35,4 +37,16 @@ module.exports = {
     filename: 'index.js',
     publicPath: 'dist/',
   },
+
+  plugins: [new HtmlWebpackPlugin({
+    inject: false,
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html'
+  }),
+  new CopyPlugin([
+    { from: 'src/img', to: 'img' },
+    
+  ]),
+]
 };
