@@ -4,7 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   module: {
-    rules: [     
+    rules: [
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -14,8 +14,8 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: {              
-              outputPath: 'img',              
+            options: {
+              outputPath: 'img',
             },
           },
         ],
@@ -40,13 +40,13 @@ module.exports = {
 
   plugins: [new HtmlWebpackPlugin({
     inject: false,
-      hash: true,
-      template: './src/index.html',
-      filename: 'index.html'
+    hash: true,
+    template: './src/index.html',
+    filename: 'index.html',
   }),
   new CopyPlugin([
     { from: 'src/img', to: 'img' },
-    
+
   ]),
-]
+  ],
 };

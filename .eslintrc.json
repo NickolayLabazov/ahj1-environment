@@ -13,6 +13,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-undef": "off"
+        "import/extensions": "off"
     }
 }
