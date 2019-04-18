@@ -10,8 +10,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-
-
           'style-loader',
           {
             loader: MiniCssExtractPlugin.loader,
@@ -21,7 +19,6 @@ module.exports = {
             },
           },
           'css-loader',
-
         ],
       },
 
