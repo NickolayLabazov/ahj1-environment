@@ -1,26 +1,30 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   module: {
     rules: [
+
       {
         test: /\.css$/,
         use: [
+
+
+          'style-loader',
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              // you can specify a publicPath here
-              // by default it uses publicPath in webpackOptions.output
               publicPath: '../',
               hmr: process.env.NODE_ENV === 'development',
             },
           },
           'css-loader',
+
         ],
       },
+
       {
         test: /\.(png|jpg|gif|ico)$/,
         use: [
@@ -46,25 +50,25 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',    
+    filename: 'index.js',
   },
 
   plugins: [
-    
-    new HtmlWebpackPlugin({
-    inject: false,
-    hash: true,
-    template: './src/index.html',
-    filename: 'index.html',
-  }),
 
-  /* new CopyPlugin([
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html',
+    }),
+
+    /* new CopyPlugin([
     { from: 'src/img', to: 'img' },
   ]), */
 
-  new MiniCssExtractPlugin({
-    filename: '/css/style.css',
-    chunkFilename: '[id].css',
-  }),
+    new MiniCssExtractPlugin({
+      filename: '/css/style.css',
+      chunkFilename: '[id].css',
+    }),
   ],
 };
